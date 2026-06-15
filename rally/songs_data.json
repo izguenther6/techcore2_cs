@@ -1,0 +1,74 @@
+[
+  {
+    "title":"The Field",
+    "artists":"Blood Orange",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/yTaz0TB9Zco?si=jUT7iM6EdyZHr-u3",
+    "streams":604906.0,
+    "date_released":"2025-06-26",
+    "explicit":false
+  },
+  {
+    "title":"stupid prizes",
+    "artists":"redveil",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/dj5nZsQ3p2o?si=gUrrDWxD-Bk3yThe",
+    "streams":3800.0,
+    "date_released":"2025-12-31",
+    "explicit":true
+  },
+  {
+    "title":"girl, get up",
+    "artists":"Doechii, SZA",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/jBKJbedSrA0?si=R2lDU0OMZmacY3tY",
+    "streams":3300000.0,
+    "date_released":"2025-12-30",
+    "explicit":true
+  },
+  {
+    "title":"walking shoes",
+    "artists":"Mali Music",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/1dexBLGQGSs?si=waNMbE0CHv9s_UeO",
+    "streams":100000000.0,
+    "date_released":"2014-11-4",
+    "explicit":false
+  },
+  {
+    "title":"yoga",
+    "artists":"janelle monae",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/0OkB6p_FZAw?si=zMs0gzWyAUTZLrEM\"",
+    "streams":78267720.0,
+    "date_released":"2015-4-13",
+    "explicit":true
+  },
+  {
+    "title":"shea butter baby",
+    "artists":"Ari lennox",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/FFuZ2avoYmw?si=3qBcwJiGttBcqBHM",
+    "streams":770000000.0,
+    "date_released":"2019-2-20",
+    "explicit":true
+  },
+  {
+    "title":"run run run",
+    "artists":"dutch malrose ",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/g1BaGm7syr4?si=MTe_BRougaoe_T5m",
+    "streams":25000000.0,
+    "date_released":"25 mar 2022 ",
+    "explicit":false
+  },
+  {
+    "title":"like a dream",
+    "artists":"thomas larosa ",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/vjfnTvOepxQ?si=YMcN7ZQqiEK_Q8cO",
+    "streams":466402.0,
+    "date_released":"16 jul 2025",
+    "explicit":false
+  },
+  {
+    "title":"man in the mirror",
+    "artists":"michael jackson",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/PivWY9wn5ps?si=7EMExwBFWXlyrjTm",
+    "streams":34.9,
+    "date_released":"9 feb 1987",
+    "explicit":false
+  }
+]

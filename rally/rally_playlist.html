@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rally Playlist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .flyer-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .flyer-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .song-list {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .song-list h2 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.3em;
+        }
+        
+        .song-item {
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .song-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .song-artist {
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        .song-item:hover {
+            background: #e8e8ff;
+            transform: translateX(5px);
+        }
+        
+        .song-item.active {
+            background: #667eea;
+            color: white;
+            border-left-color: #764ba2;
+        }
+        
+        .player-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            background: #000;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .song-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .song-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .info-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .song-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flyer-section">
+            <img src="flyer.jpg" alt="Rally Playlist Flyer" class="flyer-image">
+        </div>
+        
+        <h1>🎵 Rally Playlist</h1>
+        
+        <div class="song-list">
+            <h2>Songs</h2>
+            <div id="songsList"></div>
+        </div>
+        
+        <div class="player-section">
+            <div class="video-container">
+                <iframe id="videoPlayer" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+            <div class="song-info">
+                <div class="info-item">
+                    <div class="info-label">Artists</div>
+                    <div class="info-value" id="artists">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Date Released</div>
+                    <div class="info-value" id="dateReleased">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Streams</div>
+                    <div class="info-value" id="streams">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Explicit</div>
+                    <div class="info-value" id="explicit">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const songs = [
+  {
+    "title":"The Field",
+    "artists":"Blood Orange",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/yTaz0TB9Zco?si=jUT7iM6EdyZHr-u3",
+    "streams":604906.0,
+    "date_released":"2025-06-26",
+    "explicit":false
+  },
+  {
+    "title":"stupid prizes",
+    "artists":"redveil",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/dj5nZsQ3p2o?si=gUrrDWxD-Bk3yThe",
+    "streams":3800.0,
+    "date_released":"2025-12-31",
+    "explicit":true
+  },
+  {
+    "title":"girl, get up",
+    "artists":"Doechii, SZA",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/jBKJbedSrA0?si=R2lDU0OMZmacY3tY",
+    "streams":3300000.0,
+    "date_released":"2025-12-30",
+    "explicit":true
+  },
+  {
+    "title":"walking shoes",
+    "artists":"Mali Music",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/1dexBLGQGSs?si=waNMbE0CHv9s_UeO",
+    "streams":100000000.0,
+    "date_released":"2014-11-4",
+    "explicit":false
+  },
+  {
+    "title":"yoga",
+    "artists":"janelle monae",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/0OkB6p_FZAw?si=zMs0gzWyAUTZLrEM\"",
+    "streams":78267720.0,
+    "date_released":"2015-4-13",
+    "explicit":true
+  },
+  {
+    "title":"shea butter baby",
+    "artists":"Ari lennox",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/FFuZ2avoYmw?si=3qBcwJiGttBcqBHM",
+    "streams":770000000.0,
+    "date_released":"2019-2-20",
+    "explicit":true
+  },
+  {
+    "title":"run run run",
+    "artists":"dutch malrose ",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/g1BaGm7syr4?si=MTe_BRougaoe_T5m",
+    "streams":25000000.0,
+    "date_released":"25 mar 2022 ",
+    "explicit":false
+  },
+  {
+    "title":"like a dream",
+    "artists":"thomas larosa ",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/vjfnTvOepxQ?si=YMcN7ZQqiEK_Q8cO",
+    "streams":466402.0,
+    "date_released":"16 jul 2025",
+    "explicit":false
+  },
+  {
+    "title":"man in the mirror",
+    "artists":"michael jackson",
+    "youtube_url":"https:\/\/www.youtube.com\/embed\/PivWY9wn5ps?si=7EMExwBFWXlyrjTm",
+    "streams":34.9,
+    "date_released":"9 feb 1987",
+    "explicit":false
+  }
+];
+        
+        function initializeSongs() {
+            const songsList = document.getElementById('songsList');
+            songs.forEach((song, index) => {
+                const div = document.createElement('div');
+                div.className = 'song-item' + (index === 0 ? ' active' : '');
+                div.innerHTML = `<div class="song-title">${song.title}</div><div class="song-artist">${song.artists}</div>`;
+                div.onclick = () => playSong(song);
+                songsList.appendChild(div);
+            });
+            
+            if (songs.length > 0) {
+                playSong(songs[0]);
+            }
+        }
+        
+        function playSong(song) {
+            let embedUrl = song.youtube_url;
+            
+            // If it's already an embed URL, use it directly
+            if (embedUrl.includes('/embed/')) {
+                // It's already in embed format
+            } else if (embedUrl.includes('youtu.be')) {
+                // Handle youtu.be short URLs
+                const videoId = embedUrl.match(/youtu\.be\/([^?]+)/)[1];
+                const params = embedUrl.includes('?') ? '?' + embedUrl.split('?')[1] : '';
+                embedUrl = `https://www.youtube.com/embed/${videoId}${params}`;
+            } else {
+                // Handle regular watch URLs
+                const matches = embedUrl.match(/watch\?v=([^&]+)/);
+                if (matches) {
+                    const videoId = matches[1];
+                    const params = embedUrl.includes('si=') ? embedUrl.match(/si=([^&]*)/)[0] : '';
+                    embedUrl = `https://www.youtube.com/embed/${videoId}${params ? '?' + params : ''}`;
+                }
+            }
+            
+            document.getElementById('videoPlayer').src = embedUrl;
+            
+            document.getElementById('artists').textContent = song.artists || '-';
+            document.getElementById('dateReleased').textContent = song.date_released || '-';
+            document.getElementById('streams').textContent = Number(song.streams).toLocaleString() || '-';
+            document.getElementById('explicit').textContent = song.explicit ? 'Yes' : 'No';
+            
+            document.querySelectorAll('.song-item').forEach((item) => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.song-item').classList.add('active');
+        }
+        
+        initializeSongs();
+    </script>
+</body>
+</html>
